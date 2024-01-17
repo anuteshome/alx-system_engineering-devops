@@ -1,4 +1,4 @@
 exec { 'fix_typo':
-  path     => ['/usr/bin', '/sbin', '/bin', '/usr/sbin'],
-  command  =>  "sed -i 's/.phpp/.php/g' /var/www/html/wp-settings.php",
-  provider =>  'shell'}
+  command => 'mv /var/www/html/wp-includes/class-wp-locale.php /var/www/html/wp-includes/class-wp-locale.phpp',
+  path    => '/bin/'
+}
