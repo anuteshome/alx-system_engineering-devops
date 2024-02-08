@@ -1,1 +1,1 @@
-this is apllication server
+Application server
