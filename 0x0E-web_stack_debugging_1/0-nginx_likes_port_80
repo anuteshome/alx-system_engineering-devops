@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# change the listening port to 80. The `-s` flag tells `ln` to create a symbolic link, and
+# the `-f` flag tells `ln` to overwrite the existing link if it exists.
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
