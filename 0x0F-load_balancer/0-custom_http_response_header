@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# configure web-02 server which must be identical to web-01
+apt update
+apt -y install nginx
+echo "Hello World!"> /var/www/html/index.html
+echo "Ceci n'est pas une page"> /var/www/html/404.html
+sed -i "s/server_name _;/server_name _;\n\n\tadd_header X-Served-By $HOSTNAME;\n\trewrite ^\/redirect_me https:\/\/github.com\/amlaksil permanent;\n\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}/" /etc/nginx/sites-available/default
+service nginx start
+service nginx reload  # /etc/nginx/sites-available/default is not reloaded by default when nginx started
